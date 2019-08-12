@@ -1,0 +1,4 @@
+---
+services:
+  json.validator:
+    class: JsonSchema\Validator

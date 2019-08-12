@@ -1,0 +1,36 @@
+---
+services:
+  command.bus:
+    class: App\Framework\League\LeagueCommandBus\CommandBus
+    arguments:
+      - '@tactician.command_bus'
+
+  tactician.command_bus:
+    class: League\Tactician\CommandBus
+    arguments:
+      - ['@tactician.command_bus_middleware']
+
+  tactician.command_bus_middleware:
+    class: League\Tactician\Handler\CommandHandlerMiddleware
+    arguments:
+      - '@tactician.command_bus_name_extractor'
+      - '@tactician.command_bus_handler_locator'
+      - '@tactician.command_bus_name_inflector'
+
+  tactician.command_bus_name_extractor:
+    class: League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor
+
+  tactician.command_bus_handler_locator:
+    class: League\Tactician\Container\ContainerLocator
+    autowire: true
+    calls:
+      - method: addHandlers
+        arguments:
+          -
+            App\Domain\Person\Command\CreatePersonCommand: 'handler.create.person'
+            App\Domain\Person\Command\DeletePersonCommand: 'handler.delete.person'
+            App\Domain\Person\Command\CreatePersonStreamCommand: 'handler.create.person.stream'
+            App\Domain\Stream\Command\CreateStreamCommand: 'handler.create.stream'
+
+  tactician.command_bus_name_inflector:
+    class: League\Tactician\Handler\MethodNameInflector\InvokeInflector

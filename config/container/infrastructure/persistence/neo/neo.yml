@@ -1,0 +1,14 @@
+---
+services:
+  neo.client:
+    class: App\Framework\Neo\NeoClientBuilder
+    factory: ['App\Framework\Neo\NeoClientBuilder', 'build']
+    arguments:
+      - 'default'
+      - 'http://neo4j:password@neo4j:7474'
+
+  neo.repository:
+    class: App\Infrastructure\Persistence\Neo\Repository\AbstractNeoRepository
+    abstract: true
+    arguments:
+      - '@neo.client'

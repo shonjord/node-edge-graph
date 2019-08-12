@@ -1,0 +1,35 @@
+---
+services:
+  _defaults:
+    public: true
+
+  get.version:
+    class: App\Presentation\Http\Action\Version\GetVersion
+    arguments:
+      - 'node-edge-graph'
+      - '0.0.1'
+
+  create.person:
+    class: App\Presentation\Http\Action\Person\CreatePerson
+    arguments:
+      - '@command.bus'
+
+  delete.person:
+    class: App\Presentation\Http\Action\Person\DeletePerson
+    arguments:
+      - '@command.bus'
+
+  create.person.stream:
+    class: App\Presentation\Http\Action\Person\CreatePersonStream
+    arguments:
+      - '@command.bus'
+
+  get.person.path:
+    class: App\Presentation\Http\Action\Person\GetPersonPath
+    arguments:
+      - '@service.list.person.path'
+
+  create.stream:
+    class: App\Presentation\Http\Action\Stream\CreateStream
+    arguments:
+      - '@command.bus'

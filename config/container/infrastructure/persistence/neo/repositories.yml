@@ -1,0 +1,17 @@
+---
+services:
+  repository.neo.person:
+    class: App\Infrastructure\Persistence\Neo\Repository\Person\NeoPersonRepository
+    parent: "neo.repository"
+    calls:
+      - method: setNode
+        arguments:
+          - 'Person'
+
+  repository.neo.stream:
+    class: App\Infrastructure\Persistence\Neo\Repository\Language\NeoStreamRepository
+    parent: "neo.repository"
+    calls:
+      - method: setNode
+        arguments:
+          - 'Stream'

@@ -1,0 +1,6 @@
+---
+imports:
+  - resource: validator/validator.yml
+  - resource: service/handler/handler.yml
+  - resource: bus/command.bus.yml
+  - resource: service/person/services.yml

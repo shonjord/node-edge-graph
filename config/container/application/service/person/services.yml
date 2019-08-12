@@ -1,0 +1,6 @@
+---
+services:
+  service.list.person.path:
+    class: App\Application\Service\Person\ListPersonPath
+    arguments:
+      - '@repository.neo.person'
