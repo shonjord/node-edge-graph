@@ -13,7 +13,6 @@ help:
 	@echo "  hijack                   - Interactive console inside the application container"
 	@echo "  help                     - Shows this dialog."
 	@echo "  test                     - Runs the test suite"
-	@echo "  migrate-neo              - Runs Neo migrations"
 	@exit 0
 
 install: composer-install
