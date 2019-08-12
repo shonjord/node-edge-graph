@@ -1,0 +1,4 @@
+---
+imports:
+  - resource: action/action.yml
+  - resource: middleware/middleware.yml

@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "37df36b9-92d6-45a7-8aeb-ff0b66958bd6",
+		"name": "Node Edge Graph",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1/api",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD person",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Albert Agelviz\",\n\t\"email\": \"aagelviz@gmail.com\"\n}\n"
+				},
+				"url": {
+					"raw": "http://127.0.0.1/api/persons",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD stream",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"YouTube\",\n\t\"description\": \"Broadcast yourself\"\n}\n"
+				},
+				"url": {
+					"raw": "http://127.0.0.1/api/streams",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD stream TO person",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"streamIDs\": [\n\t\t\"55348785-9603-4324-bab8-138c0ae3272f\"\n\t]\n}\n"
+				},
+				"url": {
+					"raw": "http://127.0.0.1/api/persons/de9178e1-1e68-4c70-bfed-647c07c884b1/streams",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"persons",
+						"de9178e1-1e68-4c70-bfed-647c07c884b1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET person shortest path to NODE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1/api/persons/de9178e1-1e68-4c70-bfed-647c07c884b1/path?person=f499f22f-91a8-4525-95e5-67525da6086e",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"path": [
+						"api",
+						"persons",
+						"de9178e1-1e68-4c70-bfed-647c07c884b1",
+						"path"
+					],
+					"query": [
+						{
+							"key": "person",
+							"value": "f499f22f-91a8-4525-95e5-67525da6086e"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

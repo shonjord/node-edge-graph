@@ -1,0 +1,4 @@
+{
+  "code": 409,
+  "error": "Entity with the following field: {field}, already exists"
+}

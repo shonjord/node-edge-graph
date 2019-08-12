@@ -1,0 +1,4 @@
+---
+imports:
+  - resource: persistence/neo/neo.yml
+  - resource: persistence/neo/repositories.yml

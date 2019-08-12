@@ -1,0 +1,4 @@
+{
+  "code": 404,
+  "error": "Entity with the following field:{field}, does not exist in the records"
+}

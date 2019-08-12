@@ -1,0 +1,16 @@
+---
+imports:
+  - resource: schemas.yml
+
+services:
+  _defaults:
+    public: true
+
+  middleware.object.parser:
+    class: App\Presentation\Http\Middleware\ObjectBodyParser
+
+  middleware.schema.validator:
+    arguments:
+      - "@json.validator"
+      - "%schemas%"
+    class: App\Presentation\Http\Middleware\JsonSchemaValidator

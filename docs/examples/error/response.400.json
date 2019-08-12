@@ -1,0 +1,12 @@
+{
+  "code": 400,
+  "error": [
+    {
+      "property": "{property}",
+      "pointer": "{name}",
+      "message": "The property {name} is required",
+      "constraint": "required",
+      "context": 1
+    }
+  ]
+}

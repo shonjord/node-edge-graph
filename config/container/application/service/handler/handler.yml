@@ -1,0 +1,25 @@
+---
+services:
+  _defaults:
+    public: true
+
+  handler.create.person:
+    class: App\Application\Service\Handler\Person\CreatePersonHandler
+    arguments:
+      - '@repository.neo.person'
+
+  handler.delete.person:
+    class: App\Application\Service\Handler\Person\DeletePersonHandler
+    arguments:
+      - '@repository.neo.person'
+
+  handler.create.person.stream:
+    class: App\Application\Service\Handler\Person\CreatePersonStreamHandler
+    arguments:
+      - '@repository.neo.person'
+      - '@repository.neo.stream'
+
+  handler.create.stream:
+    class: App\Application\Service\Handler\Stream\CreateStreamHandler
+    arguments:
+      - '@repository.neo.stream'

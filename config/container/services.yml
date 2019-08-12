@@ -1,0 +1,5 @@
+---
+imports:
+  - resource: application/services.yml
+  - resource: presentation/services.yml
+  - resource: infrastructure/services.yml

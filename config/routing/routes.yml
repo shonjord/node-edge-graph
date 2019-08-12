@@ -1,0 +1,41 @@
+---
+get.version:
+  controller: get.version
+  methods: GET
+  path: api
+
+create.person:
+  controller: create.person
+  defaults:
+    before_stack:
+      - middleware.object.parser
+      - middleware.schema.validator
+  methods: POST
+  path: api/persons
+
+delete.person:
+  controller: delete.person
+  methods: DELETE
+  path: api/persons
+
+create.person.stream:
+  controller: create.person.stream
+  methods: POST
+  defaults:
+    before_stack:
+      - middleware.object.parser
+  path: api/persons/{personID}/streams
+
+get.person.path:
+  controller: get.person.path
+  methods: GET
+  path: api/persons/{personID}/path
+
+create.stream:
+  controller: create.stream
+  defaults:
+    before_stack:
+      - middleware.object.parser
+      - middleware.schema.validator
+  methods: POST
+  path: api/streams

@@ -1,0 +1,5 @@
+---
+parameters:
+  schemas:
+    POST-/api/persons: "%env(APP_DIR)%/docs/schemas/person/schema.post.person.json"
+    POST-/api/streams: "%env(APP_DIR)%/docs/schemas/stream/schema.post.stream.json"
