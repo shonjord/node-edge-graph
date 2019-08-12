@@ -16,6 +16,6 @@ final class InvalidEmailAddressException extends Exception
     {
         $this->message = sprintf($this->message, $value);
 
-        parent::__construct($this->message, Response::HTTP_CONFLICT);
+        parent::__construct($this->message, Response::HTTP_BAD_REQUEST);
     }
 }
