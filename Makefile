@@ -1,5 +1,7 @@
 include docker/scripts/env
 
+DOCKER_RAML=@docker run --rm -v `pwd`:/data letsdeal/raml2html\:6.2 -i "docs/api.raml"
+
 .PHONY: start stop
 
 help:
