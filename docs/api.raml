@@ -1,0 +1,165 @@
+#%RAML 1.0
+title: Node Edge Graph
+version: 1.0
+documentation:
+  - title: Welcome
+    content: |
+      This is the API documentation for Node Edge Graph.
+      Here are some resources that will help you understand the basics of all our APIs.
+
+types:
+  Status:
+    properties:
+      status: string
+  ResponseError:
+    properties:
+      code: number
+      error: string
+  ResponseErrorArray:
+    properties:
+      code: number
+      error: array
+
+/api:
+  displayName: Node Edge Graph API
+  get:
+    description: retursn the current version of the API.
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {
+                  "node-edge-graph": "v 0.1"
+                }
+
+  /persons:
+    displayName : person
+    description: endpoints to manage Person entity
+    post:
+      description: persist a new person into the persistence layer
+      body:
+        application/json:
+          type: !include schemas/person/schema.post.person.json
+          example: !include examples/person/post.person.json
+      responses:
+        201:
+          body:
+            application/json:
+              type: Status
+              example: |
+                  {
+                    "status": "created"
+                  }
+        400:
+          body:
+            application/json:
+              type: ResponseErrorArray
+              example: !include examples/error/response.400.json
+        409:
+          body:
+            application/json:
+              type: ResponseError
+              example: !include examples/error/response.409.json
+        500:
+          body:
+            application/json:
+              type: ResponseError
+              example: !include examples/error/response.500.json
+    delete:
+      description: removes a person from the persistence layer
+      queryParameters:
+        id:
+          type: string
+          description: UUID of the person to delete
+      responses:
+        200:
+          body:
+            application/json:
+              type: Status
+              example: |
+                  {
+                    "status" : "deleted"
+                  }
+        404:
+          body:
+            application/json:
+              type: ResponseError
+              example: !include examples/error/response.404.json
+        500:
+          body:
+            application/json:
+              type: ResponseError
+              example: !include examples/error/response.500.json
+
+    /{personID}/path:
+      displayName: shortes path from person A to B
+      description: returns the shortes path from person A to B
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/person/get.person.path.json
+
+    /{personID}/streams:
+      displayName: streams that person watches
+      description: endpoints to manage the person streams
+      post:
+        description: adds a new stream to the person
+        body:
+          application/json:
+            example: !include examples/person/post.person.stream.json
+        responses:
+          201:
+            body:
+              application/json:
+                type: Status
+                example: |
+                    {
+                      "status": "created"
+                    }
+          409:
+            body:
+              application/json:
+                type: ResponseError
+                example: !include examples/error/response.409.json
+          500:
+            body:
+              application/json:
+                type: ResponseError
+                example: !include examples/error/response.500.json
+
+  /streams:
+    displayName: streams of the app
+    description: endpoints to manage the stream entity
+    post:
+      description: adds a new stream to the app
+      body:
+        application/json:
+          type: !include schemas/stream/schema.post.stream.json
+          example: !include examples/stream/post.stream.json
+      responses:
+        201:
+          body:
+            application/json:
+              type: Status
+              example: |
+                  {
+                    "status": "created"
+                  }
+        400:
+          body:
+            application/json:
+              type: ResponseErrorArray
+              example: !include examples/error/response.400.json
+        409:
+          body:
+            application/json:
+              type: ResponseError
+              example: !include examples/error/response.409.json
+        500:
+          body:
+            application/json:
+              type: ResponseError
+              example: !include examples/error/response.500.json

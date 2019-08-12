@@ -1,0 +1,8 @@
+{
+  "from": "PersonA",
+  "to": "B",
+  "edges": [
+    "EDGE"
+  ],
+  "shortest": "Node"
+}
