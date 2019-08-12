@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  # Api
+  api:
+    container_name: api
+    build:
+      context: ./
+      dockerfile: ./docker/dev/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./:/server/http:delegated
+    links:
+      - neo4j
+    depends_on:
+      - neo4j
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    volumes:
+      - ./:/server/http:delegated
+      - ./docker/nginx/app.conf:/etc/nginx/conf.d/app.conf:delegated
+    links:
+      - api
+    ports:
+      - "80:80"
+
+  neo4j:
+    image: neo4j:3.5.8
+    container_name: neo4j
+    volumes:
+      - ./db/migrations/neo:/migrations
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    env_file:
+      - .env
